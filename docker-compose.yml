@@ -5,7 +5,7 @@ services:
     build: 
       dockerfile: ./docker/python/Dockerfile
       context: ./
-    container_name: "my-app"
+    container_name: "my-apps"
     environment:
       - PYTHONUNBUFFERED=1
     ports:
