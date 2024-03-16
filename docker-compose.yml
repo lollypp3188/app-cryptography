@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  web:
+    build: 
+      dockerfile: ./docker/python/Dockerfile
+      context: ./
+    container_name: "my-app"
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - '8001:5000'
+    volumes:
+      - .:/srv
+      
