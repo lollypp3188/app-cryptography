@@ -5,51 +5,27 @@ class CaesarCipher(Model):
 
 
     @staticmethod
-    def encrypt(string, key_a, key_b):
-        result = ""
-        for char in string:
-            if char == " ":
-                result += " "
-                continue
-            if char.islower():
-                result += chr(((ord(char) - 97) * key_a + key_b) % 26 + 97)
-            elif char.isupper():
-                result += chr(((ord(char) - 65) * key_a + key_b) % 26 + 65)
-            else:
-                result += char
-        return result
-
-    
-    @staticmethod
-    def decrypt(string, key_a, key_b):
-        result = ""
-        for char in string:
-            if char == " ":
-                result += " "
-                continue
-            if char.islower():
-                mod_result = CaesarCipher.mod(key_a, 26)
-                if mod_result is None:
-                
-                    result += char
+    def encrypt(text, shift):
+        encrypted_text = ""
+        for char in text:
+            if char.isalpha():
+                if char.islower():
+                    encrypted_text += chr((ord(char) - 97 + shift) % 26 + 97)
                 else:
-                    result += chr(((ord(char) - 97 - key_b) * mod_result) % 26 + 97)
-            elif char.isupper():
-                mod_result = CaesarCipher.mod(key_a, 26)
-                if mod_result is None:
-                
-                    result += char
-                else:
-                    result += chr(((ord(char) - 65 - key_b) * mod_result) % 26 + 65)
+                    encrypted_text += chr((ord(char) - 65 + shift) % 26 + 65)
             else:
-                result += char
-        return result
+                encrypted_text += char
+        return encrypted_text
 
-      
-
-  
     @staticmethod
-    def mod(a, m): 
-        return next((x for x in range(1, m) if (a * x) % m == 1), None)
-
-
+    def decrypt(text, shift):
+        decrypted_text = ""
+        for char in text:
+            if char.isalpha():
+                if char.islower():
+                    decrypted_text += chr((ord(char) - 97 - shift) % 26 + 97)
+                else:
+                    decrypted_text += chr((ord(char) - 65 - shift) % 26 + 65)
+            else:
+                decrypted_text += char
+        return decrypted_text
