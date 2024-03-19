@@ -31,7 +31,6 @@ class CaesarCipher(Model):
         return decrypted_text
 
 
-
 class PermutationCipher(Model):
     def __init__(self, permutation):
         """
@@ -39,6 +38,8 @@ class PermutationCipher(Model):
 
         :param permutation: A list of integers representing the permutation.
         """
+        if len(permutation) < 1 or not all(0 <= i < len(permutation) for i in permutation):
+            raise ValueError("Invalid permutation")
         self.permutation = permutation
         self.inverse_permutation = [0] * len(permutation)
         for i, j in enumerate(permutation):
@@ -56,6 +57,8 @@ class PermutationCipher(Model):
             if char.isalpha():
                 offset = ord('a') if char.islower() else ord('A')
                 index = ord(char) - offset
+                if index < 0 or index >= len(self.permutation):
+                    raise ValueError("Invalid character in plaintext")
                 encrypted_char = chr(self.permutation[index] + offset)
                 ciphertext += encrypted_char
             else:
@@ -74,6 +77,8 @@ class PermutationCipher(Model):
             if char.isalpha():
                 offset = ord('a') if char.islower() else ord('A')
                 index = ord(char) - offset
+                if index < 0 or index >=len(self.inverse_permutation):
+                    raise ValueError("Invalid character in ciphertext")
                 decrypted_char = chr(self.inverse_permutation[index] + offset)
                 plaintext += decrypted_char
             else:
