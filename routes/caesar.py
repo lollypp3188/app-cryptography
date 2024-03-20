@@ -4,8 +4,8 @@ from models.models import CaesarCipher
 
 
 
-@app.route("/cesar", methods=['GET', 'POST'])
-def cesar():
+@app.route("/caesar", methods=['GET', 'POST'])
+def caesar():
     if request.method == 'POST':
         text = request.form['text']
         offset = int(request.form['offset'])
@@ -20,4 +20,4 @@ def cesar():
 
         return jsonify(result=result)
     else:
-        return render_template("cesar.html")
+        return render_template("caesar.html")

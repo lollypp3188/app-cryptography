@@ -1,10 +1,9 @@
-
 // Register a listener for submit events.
-const form = document.getElementById("caesarForm")
+const form = document.getElementById("permutationForm")
 form.addEventListener('submit', evt => {
     evt.preventDefault();
 
-    fetch('/caesar', {
+    fetch('/permutation', {
         method: 'post',
         body: new FormData(evt.target)
     }).then(resp => resp.json())
@@ -13,6 +12,4 @@ form.addEventListener('submit', evt => {
             elem && (elem.innerHTML = text.result);
             elem && (elem.className = 'border border-accent p-2 my-4 w-full max-w-full flex rounded-btn')
         });
-    // Reset the form.
-    // evt.target.reset();
 });
