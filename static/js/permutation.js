@@ -10,6 +10,10 @@ form.addEventListener('submit', evt => {
         .then(text => {
             const elem = document.getElementById('result');
             elem && (elem.innerHTML = text.result);
-            elem && (elem.className = 'border border-accent p-2 my-4 w-full max-w-full flex rounded-btn')
+            if(elem && text?.result){
+                elem.className = 'border border-accent p-2 my-4 w-full max-w-full flex rounded-btn'
+            } else {
+                elem.className = 'hidden'
+            }
         });
 });
