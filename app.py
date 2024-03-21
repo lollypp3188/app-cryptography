@@ -9,6 +9,7 @@ with app.app_context():
     from routes.main import *
     from routes.caesar import *
     from routes.permutation import *
+    from routes.playfair import *
 
 
 if __name__ == '__main__':

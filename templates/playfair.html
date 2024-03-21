@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playfair Cipher</title>
+    <!-- Include any necessary CSS files or stylesheets here -->
+</head>
+<body>
+    <div class="flex justify-center items-center mt-5">
+        <div class="card" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title">Playfair Cipher</h5>
+                <form method="post" action="/playfair">
+                    <div class="form-group">
+                        <label for="keyword">Keyword:</label>
+                        <input type="text" name="keyword" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea name="message" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mode">Mode:</label>
+                        <select name="mode" class="form-control">
+                            <option value="MODE_NOQ">No Q Mode</option>
+                            <option value="MODE_IJSWAP">I-J Swap Mode</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="encrypt_button" class="btn btn-primary">Encrypt</button>
+                        <button type="submit" name="decrypt_button" class="btn btn-primary">Decrypt</button>
+                    </div>
+                </form>
+                {% if result %}
+                <div class="result">
+                    <h5>Result:</h5>
+                    <p>{{ result }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

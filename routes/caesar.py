@@ -1,6 +1,6 @@
 from app import app
 from flask import Flask, render_template, request, jsonify
-from models.models import CaesarCipher
+from models.caesar import CaesarCipher
 
 
 
