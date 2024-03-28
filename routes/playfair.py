@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request
+from flask import render_template, request, jsonify
 from models.playfair import PlayfairSquare, MODE_IJSWAP, MODE_NOQ
 
 
@@ -7,7 +7,7 @@ from models.playfair import PlayfairSquare, MODE_IJSWAP, MODE_NOQ
 def playfair():
     if request.method == 'POST':
         keyword = request.form['keyword']
-        message = request.form['message']
+        message = request.form['text']
         mode = request.form['mode']
         
         # Create PlayfairSquare object based on mode
@@ -16,13 +16,16 @@ def playfair():
         else:
             square = PlayfairSquare(keyword)
         
-        # Check if encryption or decryption is requested
-        if 'encrypt_button' in request.form:
+        action = request.form['action']
+        if action == 'encrypt':
             result = square.encrypt(message)
-        elif 'decrypt_button' in request.form:
+        elif action == 'decrypt':
             result = square.decrypt(message)
+        else:
+            result = "Invalid action"
         
-        return render_template('playfair.html', result=result)
+        # return render_template('playfair.html', result=result)
+        return jsonify(result=result)
 
     # Render the playfair.html template for GET requests
     return render_template('playfair.html', result=None)
