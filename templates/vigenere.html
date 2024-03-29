@@ -20,8 +20,8 @@
         </select><br><br>
         <button type="submit">Submit</button>
     </form>
-    <div id="result"></div>
-    <script src="{{ url_for('static', filename='js/vigenere.js') }}"></script>
+    <textarea type="text" class="hidden" id="result"></textarea>
+    <script src="{{ url_for('static', filename='js/submit.js', formId='vigenereForm', fetchUrl='vigenere') }}"></script>
 </body>
 </body>
 </html>
