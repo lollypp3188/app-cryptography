@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigenere Cipher</title>
+</head>
+<body>
+    <h1>Vigenere Cipher</h1>
+    <div id="errorMessage" style="color: red;"></div>
+    <form id="vigenereForm">
+        <label for="key">Key:</label>
+        <input type="text" id="key" name="key" required><br><br>
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" required><br><br>
+        <label for="action">Action:</label>
+        <select id="action" name="action" required>
+            <option value="encrypt">Encrypt</option>
+            <option value="decrypt">Decrypt</option>
+        </select><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+    <script src="{{ url_for('static', filename='js/vigenere.js') }}"></script>
+</body>
+</body>
+</html>
