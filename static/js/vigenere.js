@@ -9,7 +9,7 @@ document.getElementById('vigenereForm').addEventListener('submit', function(even
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
         if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
+            let response = JSON.parse(xhr.responseText);
             if (response.error) {
                 document.getElementById('errorMessage').textContent = response.error;
                 document.getElementById('result').textContent = '';
