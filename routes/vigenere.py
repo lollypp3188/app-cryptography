@@ -11,16 +11,16 @@ def vigenere():
         action = request.form['action']
 
         if not key:
-            return jsonify(error="Key cannot be empty")
+            return jsonify(result="Key cannot be empty")
         if not text:
-            return jsonify(error="Text cannot be empty")
+            return jsonify(result="Text cannot be empty")
 
         if action == 'encrypt':
             result = VigenereCipher.encrypt(key, text)
         elif action == 'decrypt':
             result = VigenereCipher.decrypt(key, text)
         else:
-            return jsonify(error="Invalid action")
+            return jsonify(result="Invalid action")
 
         return jsonify(result=result)
 
