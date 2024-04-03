@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Permutation Cipher</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            corePlugins: {
-                preflight: false,
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/override.css') }}">
-</head>
-<body>
-    <div class="flex justify-center items-center mt-5">
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex justify-center items-center mt-5">
         <div class="card" style="width: 50rem;">
             <div class="card-body">
                 <h5 class="card-title">Permutation cipher</h5>
@@ -95,6 +80,6 @@
 
     <script src="{{ url_for('static', filename='js/speech.js') }}"></script>
     <script src="{{ url_for('static', filename='js/submit.js', formId='permutationForm', fetchUrl='permutation') }}"></script>
-</body>
-</html>
+
+{% endblock %}
 
