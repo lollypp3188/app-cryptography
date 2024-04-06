@@ -4,8 +4,9 @@
     <div class="flex justify-center items-center mt-5">
         <div class="card" style="width: 50rem;">
             <div class="card-body">
-                <h5 class="card-title">Permutation cipher</h5>
-                <form id="permutationForm" action="/permutation" method="post" class="flex gap-3 flex-col">
+                <h5 class="card-title">Des cipher</h5>
+                
+                <form id="desForm" action="/des" method="post" class="flex gap-3 flex-col">
                     <div class="pb-2" id="main">
                         <div id="info" style="visibility: visible;">
                             <p id="info_start" style="display: inline;">
@@ -43,7 +44,7 @@
                     </div>
                     <div class="flex gap-3">
                         <div class="flex gap-2 flex-col">
-                            <button id="start_button" class="btn btn-info" onclick="startButton(event)" style="display: inline-block;">
+                            <button type="button" id="start_button" class="btn btn-info" onclick="startButton(event)" style="display: inline-block;">
                                 click to start record
                             </button>
                             <div id="div_language">
@@ -59,8 +60,8 @@
                     </div>
                     
                     
-                        <label for="permutation">Permutation (comma-separated numbers):</label>
-                        <input class="w-full input input-bordered" type="text" id="permutation" name="permutation" value="1, 5, 20, 12, 2, 22, 15, 3, 24, 13, 6, 17, 8, 25, 18, 10, 4, 19, 7, 11, 14, 16, 9, 0, 23, 21">
+                    <label for="desKey">Key:</label>
+                    <input class="w-full input input-bordered" type="text" id="desKey" name="key" value="Sixteen byte key">
                     
 
                     <div class="flex items-center gap-2">
@@ -79,7 +80,6 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/speech.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/submit.js', formId='permutationForm', fetchUrl='permutation') }}"></script>
+    <script src="{{ url_for('static', filename='js/submit.js', formId='desForm', fetchUrl='des') }}"></script>
 
 {% endblock %}
-
