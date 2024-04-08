@@ -13,12 +13,13 @@ form.addEventListener('submit', evt => {
         body: new FormData(evt.target)
     }).then(resp => resp.json())
         .then(text => {
+            const wrapper = document.getElementById('result-wrapper')
             const elem = document.getElementById('result');
             if(elem && text?.result){
-                elem.className = 'border border-accent p-2 my-4 w-full max-w-full flex rounded-btn'
+                wrapper.className = 'flex gap-3 my-4'
                 elem.innerHTML = text.result
             } else {
-                elem.className = 'hidden'
+                wrapper.className = 'hidden'
             }
         });
     // Reset the form.

@@ -43,7 +43,7 @@
                     </div>
                     <div class="flex gap-3">
                         <div class="flex gap-2 flex-col">
-                            <button id="start_button" class="btn btn-info" onclick="startButton(event)" style="display: inline-block;">
+                            <button type="button" id="start_button" class="btn btn-info" onclick="startButton(event)" style="display: inline-block;">
                                 click to start record
                             </button>
                             <div id="div_language">
@@ -56,6 +56,25 @@
                         </div>
                         <textarea type="text" class="w-full textarea textarea-bordered placeholder:italic placeholder:text-slate-400" id="text"
                             name="text"></textarea>
+                            <div class="flex flex-col gap-2">
+                                <button type="button" onclick="copy('text')" title="copy">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+                                        <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+                                    </svg>
+                                </button>
+                                <button type="button" onclick="paste('text')" title="paste">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+                                        <path d="M13.5 6.5l4 4" />
+                                    </svg>
+                                </button>
+                            </div>
                     </div>
                     
                     
@@ -73,13 +92,36 @@
                     
                     <input class="btn btn-primary" type="submit" value="Submit">
                 </form>
-                <textarea type="text" class="hidden" id="result"></textarea>
+                <div id="result-wrapper" class="hidden">
+                    <textarea type="text" id="result" class="border border-accent p-2 w-full max-w-full flex rounded-btn"></textarea>
+                    <div class="flex flex-col gap-2">
+                        <button type="button" onclick="copy('result')" title="copy">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+                                <path
+                                    d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+                            </svg>
+                        </button>
+                        <button type="button" onclick="paste('result')" title="paste">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+                                <path d="M13.5 6.5l4 4" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/speech.js') }}"></script>
     <script src="{{ url_for('static', filename='js/submit.js', formId='permutationForm', fetchUrl='permutation') }}"></script>
+    <script src="{{ url_for('static', filename='js/clipboard.js') }}"></script>
 
 {% endblock %}
 
